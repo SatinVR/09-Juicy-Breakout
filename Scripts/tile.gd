@@ -8,6 +8,7 @@ var purple = preload("res://Assets/tile_purple.png")
 var yellow = preload("res://Assets/tile_yellow.png")
 
 onready var sprite = get_node("Sprite")
+onready var _target = position
 var score = 10
 
 func _ready():
@@ -28,4 +29,8 @@ func _ready():
 	if get_parent().name == "Yellow Tiles":
 		sprite.set_texture(yellow)
 		score = 60
+	position.y = -30
+	$Tween.interpolate_property(self, "position", position, _target, 2.0, Tween.TRANS_BOUNCE, Tween.EASE_OUT)
+	$Tween.start()
+	
 	
